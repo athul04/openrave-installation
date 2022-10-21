@@ -24,23 +24,23 @@ echo "Requires root privileges:"
 # Update
 if [ ${UBUNTU_VER} = '14.04' ]; then
   # ROS Indigo repository
-  sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-  sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+  sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+  apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
   # Additional PPAs
-  sudo apt-add-repository -y ppa:imnmfotmal/libccd
+  apt-add-repository -y ppa:imnmfotmal/libccd
 fi
-sudo apt-get update
+apt-get update
 
 # Programs
-sudo apt-get install -y --no-install-recommends build-essential cmake doxygen \
+apt-get install -y --no-install-recommends build-essential cmake doxygen \
   g++ git octave python-dev python-setuptools wget mlocate
 if [ ${UBUNTU_VER} = '14.04' ] || [ ${UBUNTU_VER} = '16.04' ] || [ ${UBUNTU_VER} = '18.04' ]; then
-  sudo apt-get install -y --no-install-recommends ipython python-h5py python-numpy \
+  apt-get install -y --no-install-recommends ipython python-h5py python-numpy \
     python-pip python-wheel python-scipy
 elif [ ${UBUNTU_VER} = '20.04' ]; then
-  sudo apt-get install -y --no-install-recommends python2 curl
+  apt-get install -y --no-install-recommends python2 curl
   curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-  sudo python2 get-pip.py
+  python2 get-pip.py
   pip install ipython h5py numpy scipy wheel pyopengl
 fi
 if [ ${UBUNTU_VER} = '14.04' ]; then
