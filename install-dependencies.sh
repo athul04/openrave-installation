@@ -57,20 +57,20 @@ libmpfi-dev  libmpfr-dev liboctave-dev libode-dev libogg-dev libpcre3-dev       
 libqhull-dev libswscale-dev libtinyxml-dev libvorbis-dev libx264-dev            \
 libxml2-dev libxvidcore-dev libbz2-dev
 if [ ${UBUNTU_VER} = '14.04' ] || [ ${UBUNTU_VER} = '16.04' ] || [ ${UBUNTU_VER} = '18.04' ]; then
-  sudo apt-get install -y --no-install-recommends libsoqt-dev-common libsoqt4-dev
+  apt-get install -y --no-install-recommends libsoqt-dev-common libsoqt4-dev
 elif [ ${UBUNTU_VER} = '20.04' ]; then
-  sudo apt-get install -y --no-install-recommends libsoqt520-dev
+  apt-get install -y --no-install-recommends libsoqt520-dev
 fi
 if [ ${UBUNTU_VER} = '14.04' ]; then
-  sudo apt-get install -y --no-install-recommends collada-dom-dev libccd      \
+  apt-get install -y --no-install-recommends collada-dom-dev libccd      \
   libpcrecpp0 liblog4cxx10-dev libqt4-dev
 elif [ ${UBUNTU_VER} = '16.04' ] || [ ${UBUNTU_VER} = '18.04' ] || [ ${UBUNTU_VER} = '20.04' ]; then
-  sudo apt-get install -y --no-install-recommends libccd-dev                  \
+  apt-get install -y --no-install-recommends libccd-dev                  \
   libcollada-dom2.4-dp-dev liblog4cxx-dev libminizip-dev octomap-tools
 fi
 
 # Install boost
-sudo apt-get install -y --no-install-recommends libboost-all-dev libboost-python-dev
+apt-get install -y --no-install-recommends libboost-all-dev libboost-python-dev
 
 if [ ${UBUNTU_VER} = '18.04' ] || [ ${UBUNTU_VER} = '20.04' ]; then
   # Install opengl
@@ -80,7 +80,7 @@ if [ ${UBUNTU_VER} = '18.04' ] || [ ${UBUNTU_VER} = '20.04' ]; then
   mkdir -p ~/git 
   cd ~/git && git clone https://github.com/Tencent/rapidjson.git
   cd rapidjson && mkdir build && cd build
-  cmake .. && make -j `nproc` && sudo make install
+  cmake .. && make -j `nproc` && make install
 
   # Install Pybind
   cd ~/git && git clone https://github.com/pybind/pybind11.git 
@@ -98,8 +98,8 @@ if [ ${UBUNTU_VER} = '18.04' ] || [ ${UBUNTU_VER} = '20.04' ]; then
     && git cherry-pick dae2d434bd806eac67e38f3c49cfc91f46e4fd88 \
     && git cherry-pick 2e08ce9ba75f5a2d87a6f12e6ab657ac78444e8e \
     && cmake .. -DPYBIND11_TEST=OFF -DPythonLibsNew_FIND_VERSION=2 \
-    && sudo make install
+    && make install
 fi
 
 # updatedb for debugging purposes
-sudo updatedb
+updatedb
